@@ -51,7 +51,7 @@ if(HAS_SOCKLEN_T)
 endif()
  
 include_directories(${PROJECT_SOURCE_DIR}/include)
-add_subdirectory( ${PROJECT_SOURCE_DIR}/include)
+add_subdirectory(${PROJECT_SOURCE_DIR}/include)
 
 add_library(enet STATIC
         callbacks.c
@@ -65,9 +65,30 @@ add_library(enet STATIC
         win32.c
     )
 
+
+# install handling: begin
+configure_file(enet-config.cmake.in enet-config.cmake @ONLY)
+configure_file(enet-configVersion.cmake.in enet-configVersion.cmake @ONLY)
+
+# Install enet-config.cmake and enet-configVersion.cmake
+install(
+  FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/enet-config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/enet-configVersion.cmake"
+  DESTINATION "."
+)
+
+install(
+  EXPORT enetTargets
+  FILE enetTargets.cmake
+  
+  DESTINATION cmake
+)
     
 install(
   TARGETS enet
-
+  EXPORT enetTargets
   DESTINATION lib
 )
+
+# install handling: end

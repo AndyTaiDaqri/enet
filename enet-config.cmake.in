@@ -1,0 +1,17 @@
+# - Config file for the enet package
+# It defines the following variables
+#  enet_FOUND - indicates that the module was found
+#  enet_INCLUDE_DIR - include directories
+
+# Check if local build
+if ("@CMAKE_CURRENT_BINARY_DIR@" STREQUAL CMAKE_CURRENT_LIST_DIR)
+  set(enet_INCLUDE_DIR "@PROJECT_SOURCE_DIR@")
+  include("@CMAKE_CURRENT_BINARY_DIR@/enetTargets.cmake")
+else()
+  set(enet_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include")
+  include("${CMAKE_CURRENT_LIST_DIR}/cmake/enetTargets.cmake")
+endif()
+
+set(enet_FOUND TRUE)
+
+
