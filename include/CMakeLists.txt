@@ -13,5 +13,5 @@ set(install_headers
 
 install(
   FILES ${install_headers}
-  DESTINATION include
+  DESTINATION include/enet
 )
