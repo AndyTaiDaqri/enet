@@ -51,7 +51,8 @@ if(HAS_SOCKLEN_T)
 endif()
  
 include_directories(${PROJECT_SOURCE_DIR}/include)
- 
+add_subdirectory( ${PROJECT_SOURCE_DIR}/include)
+
 add_library(enet STATIC
         callbacks.c
         compress.c
@@ -63,3 +64,10 @@ add_library(enet STATIC
         unix.c
         win32.c
     )
+
+    
+install(
+  TARGETS enet
+
+  DESTINATION lib
+)
