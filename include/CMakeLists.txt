@@ -1,6 +1,9 @@
 set(install_headers
+    enet/enet.h   
+)
+
+set(headers ${install_headers} 
     enet/callbacks.h
-    enet/enet.h
     enet/list.h
     enet/protocol.h
     enet/time.h
@@ -9,7 +12,6 @@ set(install_headers
     enet/utility.h
     enet/win32.h
 )
-
 
 install(
   FILES ${install_headers}
